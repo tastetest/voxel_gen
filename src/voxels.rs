@@ -1,19 +1,25 @@
-use bevy::prelude::*;
+pub mod voxels {
+    use bevy::prelude::*;
 
-enum VoxelType {
-    Air(f32),
-    Stone(f32),
-    Dirt(f32)
-}
-#[derive(Component)]
-struct Voxel {
-    Vec3: (f32, f32, f32),
-    id: f32,
-    block_type: f32,
-}
-// going to generate a chunk
-fn chunk_gen(mut commands: Commands) {
+    pub enum VoxelType {
+        Air,
+        Dirt,
+        Stone,
+    }
 
-    let voxel_gen = Vec3::new(0.2, 3.0, 4.0);
+    #[derive(Copy, Clone, Debug)]
+    pub struct Voxel {
+        color: Vec3,
+        block_id: u8,
+    }
 
+
+    impl Voxel {
+        fn voxel_generate(mut commands: Commands, mut meshes: ResMut<Assets<Mesh>>) {
+            commands.spawn_bundle(PbrBundle {
+                mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })), 
+                ..default()
+            });
+        }
+    }
 }
