@@ -1,16 +1,17 @@
 use bevy::prelude::*;
 
-enum VoxelType {
+enum BlockType {
     Air(f32),
     Stone(f32),
     Dirt(f32)
 }
+
 #[derive(Component)]
 struct Voxel {
-    Vec3: (f32, f32, f32),
     id: f32,
-    block_type: f32,
+    block_type: BlockType,
 }
+
 // going to generate a chunk
 fn chunk_gen(mut commands: Commands) {
 

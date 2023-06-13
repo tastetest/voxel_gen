@@ -12,5 +12,5 @@ opt-level = 1
 opt-level = 3
 
 [dependencies]
-bevy = "0.8.1"
+bevy = "0.10"
 noise = "0.7.0"

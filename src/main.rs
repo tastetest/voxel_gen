@@ -15,18 +15,11 @@ fn main() {
         .run();
 }
 fn setup_camera(mut commands: Commands) {
-    commands.spawn_bundle(Camera3dBundle {
+    commands.spawn(Camera3dBundle {
 
         transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..default()
     });
-}
-
-#[derive(Component)]
-struct Voxel {
-    x: f32,
-    y: f32,
-    z: f32,
 }
 
 fn noise_setup(mut commands: Commands, 
@@ -45,7 +38,7 @@ fn noise_setup(mut commands: Commands,
 fn cube_setup(mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>) {
-    commands.spawn_bundle(PbrBundle{
+    commands.spawn(PbrBundle {
         mesh: meshes.add(Mesh::from(shape::Cube { size: 0.22 })),
         material: materials.add(Color::rgb(1.0, 4.0, 5.0).into()),
         ..Default::default()
