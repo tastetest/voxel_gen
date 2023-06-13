@@ -8,15 +8,12 @@ mod voxels;
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_startup_system(setup_camera)
-        .add_startup_system(noise_setup)
-        .add_system(cube_setup)
         .add_system(bevy::window::close_on_esc)
         .run();
 }
+
 fn setup_camera(mut commands: Commands) {
     commands.spawn(Camera3dBundle {
-
         transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..default()
     });

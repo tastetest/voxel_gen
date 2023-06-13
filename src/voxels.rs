@@ -1,20 +1,33 @@
 use bevy::prelude::*;
 
 enum BlockType {
-    Air(f32),
-    Stone(f32),
-    Dirt(f32)
+    air,
+    solid,
+    liquid,
 }
 
 #[derive(Component)]
 struct Voxel {
-    id: f32,
+    id: u8,
     block_type: BlockType,
 }
 
-// going to generate a chunk
-fn chunk_gen(mut commands: Commands) {
+impl Voxel {
+    fn generate_voxels() {
+        // do some fun stuff here right
+        let stone = Voxel {
+            id: 0,
+            block_type: BlockType::solid,
+        };
 
-    let voxel_gen = Vec3::new(0.2, 3.0, 4.0);
+        let void = Voxel {
+            id: 1,
+            block_type: BlockType::air,
+        };
 
+        let water = Voxel {
+            id: 2,
+            block_type: BlockType::liquid,
+        };
+    }
 }
